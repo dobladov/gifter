@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useMediaPredicate } from 'react-media-hook';
 import LightBoxItem from './LightBoxItem.tsx';
 
@@ -13,6 +13,7 @@ const LightBox = ({
   setItemSelectedIndex,
   itemList,
 }: Props) => {
+  let mouseStart = null;
   const lightBoxContent = useRef(null);
 
   const current = itemList[itemSelectedIndex];
@@ -64,10 +65,27 @@ const LightBox = ({
           />
           )}
 
-          <LightBoxItem
-            main
-            item={current}
-          />
+          <div
+            onTouchStart={(e) => {
+              mouseStart = (e.touches[0].clientX);
+            }}
+            onTouchEnd={(e) => {
+              const mouseEnd = e.changedTouches[0].pageX;
+              const prev = mouseEnd < mouseStart - 100;
+              const next = mouseEnd > mouseStart + 100;
+
+              if (prev) {
+                setItemSelectedIndex(itemSelectedIndex - 1);
+              } else if (next) {
+                setItemSelectedIndex(itemSelectedIndex + 1);
+              }
+            }}
+          >
+            <LightBoxItem
+              main
+              item={current}
+            />
+          </div>
 
 
           {destopView && nextItem && (
