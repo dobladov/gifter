@@ -36,7 +36,8 @@ const LightBox = ({ itemSelectedIndex, setItemSelectedIndex, itemList, }) => {
             }
         } },
         React.createElement("div", { className: "lightBoxContent", ref: lightBoxContent },
-            destopView && prevItem && (React.createElement(LightBoxItem, { className: "prev", item: prevItem, onClick: () => {
+            destopView && prevItem && (React.createElement(LightBoxItem, { className: "prev", item: prevItem, onClick: (e) => {
+                    e.preventDefault();
                     if (itemSelectedIndex !== null) {
                         setItemSelectedIndex(itemSelectedIndex - 1);
                     }
@@ -55,7 +56,8 @@ const LightBox = ({ itemSelectedIndex, setItemSelectedIndex, itemList, }) => {
                     }
                 } },
                 React.createElement(LightBoxItem, { main: true, item: current })),
-            destopView && nextItem && (React.createElement(LightBoxItem, { className: "next", item: nextItem, onClick: () => {
+            destopView && nextItem && (React.createElement(LightBoxItem, { className: "next", item: nextItem, onClick: (e) => {
+                    e.preventDefault();
                     if (itemSelectedIndex !== null) {
                         setItemSelectedIndex(itemSelectedIndex + 1);
                     }
