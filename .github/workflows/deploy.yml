@@ -22,6 +22,7 @@ jobs:
         npm test
         echo API_URL = '${{ secrets.API_URL }}' > .env
         echo API_KEY = '${{ secrets.API_KEY }}' >> .env
+        echo BASE_URL = '/gifter/' >> .env
         cat .env
         npm run deploy
         touch dist/.nojekyll

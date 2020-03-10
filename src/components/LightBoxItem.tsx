@@ -4,7 +4,36 @@ import React from 'react';
 import '../styles/LightBoxItem.css';
 
 export interface Props {
-  // TODO
+  className?: string
+  main?: boolean
+  onClick?: () => void
+  item: Item
+}
+
+export interface Item {
+  id: string
+  username: string
+  images: {
+    fixed_width_still: {
+      url: string
+    }
+    downsized_still: {
+      url: string
+    }
+    original: {
+      width: string
+      height: string
+      webp: string
+      url: string
+    }
+    original_mp4: {
+      mp4: string
+    }
+    fixed_width: {
+      webp: string
+      mp4: string
+    }
+  }
 }
 
 const LightBoxItem = ({
@@ -20,9 +49,9 @@ const LightBoxItem = ({
       key={item.id}
       loop
       autoPlay
-      mute="true"
-      width={main && item.images.original.width}
-      height={main && item.images.original.height}
+      muted
+      width={main ? item.images.original.width : 'auto'}
+      height={main ? item.images.original.height : 'auto'}
     >
       {main ? (
         <>

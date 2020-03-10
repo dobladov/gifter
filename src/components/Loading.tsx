@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/Loading.css';
 
 interface Props {
-  className: string
+  className?: string
 }
 
 const Loading = ({ className }: Props) => (

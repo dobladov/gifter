@@ -24,6 +24,18 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "camelcase": "off",
         "react/jsx-filename-extension": [0],
+        "import/no-unresolved": "off",
+        "import/extensions": "off",
+        'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx', '.css'] }],
+        "jsx-a11y/control-has-associated-label": "off",
+        "no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "[I]\\w+"
+            }
+        ]
     }
 };

@@ -1,6 +1,10 @@
 import React from 'react';
+import { getPageOptions } from './App';
 
 export interface Props {
+  searchTerm?: string
+  setSearchTerm: (term: string) => void
+  getPage: ({ q: string }: getPageOptions) => void
 }
 
 const Search = ({

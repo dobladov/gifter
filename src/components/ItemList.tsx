@@ -2,7 +2,22 @@ import React from 'react';
 
 import '../styles/ItemList.css';
 
-const ItemList = ({ items, setItemSelectedIndex }) => (
+export interface Props {
+  items: Item[]
+  setItemSelectedIndex: (i: number) => void
+}
+
+export interface Item {
+  id: string
+  title: string
+  images: {
+    fixed_height_still: {
+      url: string
+    }
+  }
+}
+
+const ItemList = ({ items, setItemSelectedIndex }: Props) => (
   <ul className="ItemList">
     {items.map((item, i) => (
       <li

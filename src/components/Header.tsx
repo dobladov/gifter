@@ -4,12 +4,16 @@ import '../styles/Header.css';
 
 import Logo from '../assets/logo.svg';
 
-const Header = () => (
+interface Props {
+  BASE_URL: string
+}
+
+const Header = ({ BASE_URL }: Props) => (
   <header className="Header">
     <div className="centerWrapper">
-      <a href="/">
+      <a href={BASE_URL}>
         <h1>
-          <Logo alt="Gifter" />
+          <Logo />
         </h1>
       </a>
 

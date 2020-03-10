@@ -1,11 +1,17 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useMediaPredicate } from 'react-media-hook';
-import LightBoxItem from './LightBoxItem.tsx';
+import LightBoxItem, { Item } from './LightBoxItem';
 
 import '../styles/LightBox.css';
 
 export interface Props {
-  // TODO
+  itemSelectedIndex: number | null
+  setItemSelectedIndex: (i: number | null) => void
+  itemList: Item[]
+}
+
+export interface handleKeys {
+  key: string
 }
 
 const LightBox = ({
@@ -13,21 +19,25 @@ const LightBox = ({
   setItemSelectedIndex,
   itemList,
 }: Props) => {
-  let mouseStart = null;
+  let mouseStart: number | null = null;
   const lightBoxContent = useRef(null);
 
   const current = itemList[itemSelectedIndex];
-  const prevItem = itemList[itemSelectedIndex - 1] || null;
-  const nextItem = itemList[itemSelectedIndex + 1] || null;
+  const prevItem = itemList[itemSelectedIndex && itemSelectedIndex - 1] || null;
+  const nextItem = itemList[itemSelectedIndex && itemSelectedIndex + 1] || null;
   const destopView = useMediaPredicate('(min-width: 992px)');
 
-  const handleKeys = ({ key }) => {
+  const handleKeys = ({ key }: handleKeys) => {
     if (key === 'Escape') {
       setItemSelectedIndex(null);
     } else if (key === 'ArrowLeft' && itemSelectedIndex !== 0) {
-      setItemSelectedIndex(itemSelectedIndex - 1);
-    } else if (key === 'ArrowRight' && itemSelectedIndex < itemList.length - 1) {
-      setItemSelectedIndex(itemSelectedIndex + 1);
+      if (itemSelectedIndex) {
+        setItemSelectedIndex(itemSelectedIndex - 1);
+      }
+    } else if (key === 'ArrowRight' && itemSelectedIndex && itemSelectedIndex < itemList.length - 1) {
+      if (itemSelectedIndex) {
+        setItemSelectedIndex(itemSelectedIndex + 1);
+      }
     }
   };
 
@@ -60,7 +70,9 @@ const LightBox = ({
             className="prev"
             item={prevItem}
             onClick={() => {
-              setItemSelectedIndex(itemSelectedIndex - 1);
+              if (itemSelectedIndex) {
+                setItemSelectedIndex(itemSelectedIndex - 1);
+              }
             }}
           />
           )}
@@ -71,12 +83,12 @@ const LightBox = ({
             }}
             onTouchEnd={(e) => {
               const mouseEnd = e.changedTouches[0].pageX;
-              const prev = mouseEnd < mouseStart - 100;
-              const next = mouseEnd > mouseStart + 100;
+              const prev: boolean = (mouseStart && (mouseEnd < mouseStart - 100)) || false;
+              const next: boolean = (mouseStart && mouseEnd > mouseStart + 100) || false;
 
-              if (prev) {
+              if (prev && itemSelectedIndex) {
                 setItemSelectedIndex(itemSelectedIndex - 1);
-              } else if (next) {
+              } else if (next && itemSelectedIndex) {
                 setItemSelectedIndex(itemSelectedIndex + 1);
               }
             }}
@@ -93,12 +105,15 @@ const LightBox = ({
             className="next"
             item={nextItem}
             onClick={() => {
-              setItemSelectedIndex(itemSelectedIndex + 1);
+              if (itemSelectedIndex) {
+                setItemSelectedIndex(itemSelectedIndex + 1);
+              }
             }}
           />
           )}
 
           <button
+            aria-label="Close Modal"
             className="close styledInput"
             type="button"
             onClick={() => {
