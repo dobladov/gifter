@@ -6,20 +6,20 @@ const LightBox = ({ itemSelectedIndex, setItemSelectedIndex, itemList, }) => {
     let mouseStart = null;
     const lightBoxContent = useRef(null);
     const current = itemList[itemSelectedIndex];
-    const prevItem = itemList[itemSelectedIndex && itemSelectedIndex - 1] || null;
-    const nextItem = itemList[itemSelectedIndex && itemSelectedIndex + 1] || null;
+    const prevItem = itemList[itemSelectedIndex !== null && itemSelectedIndex - 1] || null;
+    const nextItem = itemList[itemSelectedIndex !== null && itemSelectedIndex + 1] || null;
     const destopView = useMediaPredicate('(min-width: 992px)');
     const handleKeys = ({ key }) => {
         if (key === 'Escape') {
             setItemSelectedIndex(null);
         }
         else if (key === 'ArrowLeft' && itemSelectedIndex !== 0) {
-            if (itemSelectedIndex) {
+            if (itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex - 1);
             }
         }
-        else if (key === 'ArrowRight' && itemSelectedIndex && itemSelectedIndex < itemList.length - 1) {
-            if (itemSelectedIndex) {
+        else if (key === 'ArrowRight' && itemSelectedIndex !== null && itemSelectedIndex < itemList.length - 1) {
+            if (itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex + 1);
             }
         }
@@ -37,7 +37,7 @@ const LightBox = ({ itemSelectedIndex, setItemSelectedIndex, itemList, }) => {
         } },
         React.createElement("div", { className: "lightBoxContent", ref: lightBoxContent },
             destopView && prevItem && (React.createElement(LightBoxItem, { className: "prev", item: prevItem, onClick: () => {
-                    if (itemSelectedIndex) {
+                    if (itemSelectedIndex !== null) {
                         setItemSelectedIndex(itemSelectedIndex - 1);
                     }
                 } })),
@@ -47,16 +47,16 @@ const LightBox = ({ itemSelectedIndex, setItemSelectedIndex, itemList, }) => {
                     const mouseEnd = e.changedTouches[0].pageX;
                     const prev = (mouseStart && (mouseEnd < mouseStart - 100)) || false;
                     const next = (mouseStart && mouseEnd > mouseStart + 100) || false;
-                    if (prev && itemSelectedIndex) {
+                    if (prev && itemSelectedIndex !== null) {
                         setItemSelectedIndex(itemSelectedIndex - 1);
                     }
-                    else if (next && itemSelectedIndex) {
+                    else if (next && itemSelectedIndex !== null) {
                         setItemSelectedIndex(itemSelectedIndex + 1);
                     }
                 } },
                 React.createElement(LightBoxItem, { main: true, item: current })),
             destopView && nextItem && (React.createElement(LightBoxItem, { className: "next", item: nextItem, onClick: () => {
-                    if (itemSelectedIndex) {
+                    if (itemSelectedIndex !== null) {
                         setItemSelectedIndex(itemSelectedIndex + 1);
                     }
                 } })),
