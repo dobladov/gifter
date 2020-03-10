@@ -15,6 +15,7 @@ const Search = ({
     }}
   >
     <input
+      type="text"
       className="styledInput"
       required
       list="searchs"
@@ -23,7 +24,6 @@ const Search = ({
         const { value } = e.target;
         setSearchTerm(value);
       }}
-      type="search"
     />
 
     <datalist id="searchs">

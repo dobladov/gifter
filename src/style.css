@@ -24,6 +24,7 @@ body {
 
 .controls input {
   width: 100%;
+  box-sizing : border-box;
 }
 
 .styledInput {
@@ -38,6 +39,11 @@ body {
 .styledInput:focus,
 .styledInput:hover {
   background-color: var(--mainColorOverlay);
+  color: var(--bgColor);
+}
+
+.styledInput:focus::placeholder,
+.styledInput:hover::placeholder {
   color: var(--bgColor);
 }
 
