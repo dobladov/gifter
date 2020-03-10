@@ -1,0 +1,19 @@
+{
+  "name":"Gifter - Gif gallery",
+  "short_name":"Gifter",
+  "icons":[
+     {
+        "src":"assets/favicons/favicon-195.png",
+        "sizes":"195x195",
+        "type":"image/png"
+     },
+     {
+        "src":"assets/favicons/favicon-228.png",
+        "sizes":"228x228",
+        "type":"image/png"
+     }
+  ],
+  "theme_color":"#FEDC2A",
+  "background_color":"#5A3B5D",
+  "display":"standalone"
+}

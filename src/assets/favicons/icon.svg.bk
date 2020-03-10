@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg843"
+   version="1.1"
+   viewBox="0 0 135.46666 135.46667"
+   height="512"
+   width="512">
+  <defs
+     id="defs837" />
+  <metadata
+     id="metadata840">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-161.53332)"
+     id="layer1">
+    <path
+       id="path1399"
+       d="m 19.243406,194.90303 26.994222,-26.72696 28.86511,-1.06907 20.84702,43.29766 -2.672694,44.90128 c 0,0 -50.781211,-8.28536 -52.384827,-8.55263 -1.603618,-0.26726 -20.579753,-26.99422 -20.579753,-26.99422 z"
+       style="fill:#ffffff;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1" />
+    <g
+       id="flowRoot1391"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#5a3b5d;fill-opacity:1;stroke:none"
+       transform="matrix(5.9262144,0,0,5.9262144,597.31586,335.36619)"
+       aria-label="G">
+      <path
+         id="path817"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:'Sudbury Basin';-inkscape-font-specification:'Sudbury Basin';fill:#5a3b5d;fill-opacity:1"
+         d="m -85.624,-15.414531 v -7.104 H -89.8 v 2.904 h -3.048 v -4.176 h 4.176 v -4.2 h -4.176 l -4.2,4.2 v 4.176 l 4.2,4.2 z m -12.36,-3.816 v -4.944 l 4.752,-4.752 h 5.544 l 6.768,13.104 v 8.9279998 h -8.472 l -4.728,-4.7279998 z" />
+    </g>
+  </g>
+</svg>
