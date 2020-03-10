@@ -1,0 +1,40 @@
+{
+  "name": "gifter",
+  "version": "1.0.0",
+  "description": "Gif gallery using the giphy API",
+  "main": "index.js",
+  "dependencies": {
+    "@svgr/parcel-plugin-svgr": "^5.2.0",
+    "@types/react": "^16.9.23",
+    "normalize.css": "^8.0.1",
+    "parcel": "^1.12.4",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "test": "eslint src",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "deploy": "parcel build src/index.html --public-url /gifter"
+  },
+  "keywords": [
+    "gif",
+    "gallery",
+    "lightbox"
+  ],
+  "author": "Daniel Doblado",
+  "license": "MIT"
+}

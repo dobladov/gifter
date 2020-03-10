@@ -1,0 +1,21 @@
+.LightBoxItem {
+  margin: 20px;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+}
+
+.LightBoxItem video {
+  display: block;
+}
+
+.LightBoxItem .meta {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.LightBoxItem .credit {
+  color: var(--bgColor);
+}

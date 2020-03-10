@@ -1,0 +1,8 @@
+.Pagination {
+  display: flex;
+  align-items: center;
+}
+
+.Pagination .styledInput {
+  margin-left: 10px;
+}

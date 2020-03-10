@@ -1,0 +1,30 @@
+.LightBox {
+  text-align: center;
+  background-color: hsla(0, 0%, 0%, .8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  animation: fade .5s forwards;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.lightBoxContent {
+  display: flex;
+  align-items: center;
+}
+
+.LightBox .close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
