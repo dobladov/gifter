@@ -21,8 +21,8 @@ const LightBoxItem = ({
       loop
       autoPlay
       mute="true"
-      width={main ? item.images.original.width : item.images.fixed_width_still.width}
-      height={main ? item.images.original.height : item.images.fixed_height_still.height}
+      width={main && item.images.original.width}
+      height={main && item.images.original.height}
     >
       {main ? (
         <>

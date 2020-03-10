@@ -1,8 +1,6 @@
 .ItemList {
   display: flex;
   flex-wrap: wrap;
-  /* gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); */
   margin-top: 20px;
   list-style-type: none;
   margin: 0;
@@ -24,8 +22,11 @@
 }
 
 @media (min-width: 576px) {
+  .ItemList {
+    padding: 40px;
+  }
+
   .ItemList li {
     width: initial;
-    padding: 40px;
   }
 }
