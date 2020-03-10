@@ -25,7 +25,8 @@ const ItemList = ({ items, setItemSelectedIndex }: Props) => (
       >
         <a
           href={`#${item.id}`}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setItemSelectedIndex(i);
           }}
         >

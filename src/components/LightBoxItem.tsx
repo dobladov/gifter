@@ -6,7 +6,7 @@ import '../styles/LightBoxItem.css';
 export interface Props {
   className?: string
   main?: boolean
-  onClick?: () => void
+  onClick?: (e) => void
   item: Item
 }
 

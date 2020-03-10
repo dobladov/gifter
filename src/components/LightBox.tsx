@@ -69,7 +69,8 @@ const LightBox = ({
           <LightBoxItem
             className="prev"
             item={prevItem}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex - 1);
               }
@@ -104,7 +105,8 @@ const LightBox = ({
           <LightBoxItem
             className="next"
             item={nextItem}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               if (itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex + 1);
               }
