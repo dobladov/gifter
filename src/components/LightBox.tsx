@@ -23,19 +23,19 @@ const LightBox = ({
   const lightBoxContent = useRef(null);
 
   const current = itemList[itemSelectedIndex];
-  const prevItem = itemList[itemSelectedIndex && itemSelectedIndex - 1] || null;
-  const nextItem = itemList[itemSelectedIndex && itemSelectedIndex + 1] || null;
+  const prevItem = itemList[itemSelectedIndex !== null && itemSelectedIndex - 1] || null;
+  const nextItem = itemList[itemSelectedIndex !== null && itemSelectedIndex + 1] || null;
   const destopView = useMediaPredicate('(min-width: 992px)');
 
   const handleKeys = ({ key }: handleKeys) => {
     if (key === 'Escape') {
       setItemSelectedIndex(null);
     } else if (key === 'ArrowLeft' && itemSelectedIndex !== 0) {
-      if (itemSelectedIndex) {
+      if (itemSelectedIndex !== null) {
         setItemSelectedIndex(itemSelectedIndex - 1);
       }
-    } else if (key === 'ArrowRight' && itemSelectedIndex && itemSelectedIndex < itemList.length - 1) {
-      if (itemSelectedIndex) {
+    } else if (key === 'ArrowRight' && itemSelectedIndex !== null && itemSelectedIndex < itemList.length - 1) {
+      if (itemSelectedIndex !== null) {
         setItemSelectedIndex(itemSelectedIndex + 1);
       }
     }
@@ -70,7 +70,7 @@ const LightBox = ({
             className="prev"
             item={prevItem}
             onClick={() => {
-              if (itemSelectedIndex) {
+              if (itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex - 1);
               }
             }}
@@ -86,9 +86,9 @@ const LightBox = ({
               const prev: boolean = (mouseStart && (mouseEnd < mouseStart - 100)) || false;
               const next: boolean = (mouseStart && mouseEnd > mouseStart + 100) || false;
 
-              if (prev && itemSelectedIndex) {
+              if (prev && itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex - 1);
-              } else if (next && itemSelectedIndex) {
+              } else if (next && itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex + 1);
               }
             }}
@@ -105,7 +105,7 @@ const LightBox = ({
             className="next"
             item={nextItem}
             onClick={() => {
-              if (itemSelectedIndex) {
+              if (itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex + 1);
               }
             }}
