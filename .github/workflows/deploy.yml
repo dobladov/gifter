@@ -17,12 +17,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '13.x'
-      env:
-        API_URL: ${{ secrets.API_URL }}
-        API_KEY: ${{ secrets.API_KEY }}
     - run: |
         npm install
         npm test
+        echo API_URL = '${{ secrets.API_URL }}' > .env
+        echo API_KEY = '${{ secrets.API_URL }}' >> .env
         npm run deploy
         touch dist/.nojekyll
     - name: Deploy
