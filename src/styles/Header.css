@@ -3,8 +3,6 @@
 }
 
 .Header .centerWrapper {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
   padding: 20px;
 }
@@ -24,4 +22,11 @@
 .Header h2 {
   font-weight: 300;
   margin: 0;
+}
+
+@media (min-width: 576px) {
+  .Header .centerWrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
 }

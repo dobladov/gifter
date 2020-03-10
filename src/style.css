@@ -15,12 +15,15 @@ body {
 }
 
 .controls {
-  display: flex;
   justify-content: space-evenly;
   background-color: var(--bgColor);
   padding: 20px;
   position: sticky;
   top: 0;
+}
+
+.controls input {
+  width: 100%;
 }
 
 .styledInput {
@@ -41,4 +44,10 @@ body {
 .centerWrapper {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .controls {
+    display: flex;
+  }
 }

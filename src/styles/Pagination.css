@@ -1,8 +1,17 @@
 .Pagination {
-  display: flex;
   align-items: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Pagination .styledInput {
   margin-left: 10px;
+}
+
+@media (min-width: 576px) {
+  .Pagination  {
+    display: flex;
+    margin-top: 0;
+  }
 }
