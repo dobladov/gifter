@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useMediaPredicate } from 'react-media-hook';
 import LightBoxItem from './LightBoxItem.tsx';
 
 import '../styles/LightBox.css';
@@ -17,6 +18,7 @@ const LightBox = ({
   const current = itemList[itemSelectedIndex];
   const prevItem = itemList[itemSelectedIndex - 1] || null;
   const nextItem = itemList[itemSelectedIndex + 1] || null;
+  const destopView = useMediaPredicate('(min-width: 992px)');
 
   const handleKeys = ({ key }) => {
     if (key === 'Escape') {
@@ -52,7 +54,7 @@ const LightBox = ({
           ref={lightBoxContent}
         >
 
-          {prevItem && (
+          {destopView && prevItem && (
           <LightBoxItem
             className="prev"
             item={prevItem}
@@ -68,7 +70,7 @@ const LightBox = ({
           />
 
 
-          {nextItem && (
+          {destopView && nextItem && (
           <LightBoxItem
             className="next"
             item={nextItem}
