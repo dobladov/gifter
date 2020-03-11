@@ -15,6 +15,7 @@ import LightBox from './LightBox';
 import Search from './Search';
 import Loading from './Loading';
 import { fetchData } from '../common';
+// Get variables from enviroment
 const { API_URL } = process.env;
 const { API_KEY } = process.env;
 const { BASE_URL = '/' } = process.env;

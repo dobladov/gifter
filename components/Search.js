@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import React from 'react';
 const Search = ({ searchTerm, setSearchTerm, getPage, }) => (React.createElement("form", { onSubmit: (e) => __awaiter(void 0, void 0, void 0, function* () {
         e.preventDefault();
+        // Get the data with the given search term
         getPage({ q: searchTerm });
     }) },
     React.createElement("input", { type: "text", className: "styledInput", required: true, list: "searchs", placeholder: "Search for Gifs", onChange: (e) => {
