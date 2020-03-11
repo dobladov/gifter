@@ -19,22 +19,31 @@ const LightBox = ({
   setItemSelectedIndex,
   itemList,
 }: Props) => {
-  let mouseStart: number | null = null;
+  // Holds the position of when the user starts a swipe
+  let touchStart: number | null = null;
+
+  // Reference used to check if the modal should close
   const lightBoxContent = useRef(null);
 
+  // Get the current, next and previous gifs based on the itemSelectedIndex
   const current = itemList[itemSelectedIndex];
   const prevItem = itemList[itemSelectedIndex !== null && itemSelectedIndex - 1] || null;
   const nextItem = itemList[itemSelectedIndex !== null && itemSelectedIndex + 1] || null;
+
+  // Check if the the width is enough for all elements
   const destopView = useMediaPredicate('(min-width: 992px)');
 
   const handleKeys = ({ key }: handleKeys) => {
     if (key === 'Escape') {
+      // Close the modal if escape key is pressed
       setItemSelectedIndex(null);
     } else if (key === 'ArrowLeft' && itemSelectedIndex !== 0) {
+      // Load the next gif if the ArrowLeft key is pressed
       if (itemSelectedIndex !== null) {
         setItemSelectedIndex(itemSelectedIndex - 1);
       }
     } else if (key === 'ArrowRight' && itemSelectedIndex !== null && itemSelectedIndex < itemList.length - 1) {
+      // Load the previous gif if the ArrowLeft key is pressed
       if (itemSelectedIndex !== null) {
         setItemSelectedIndex(itemSelectedIndex + 1);
       }
@@ -42,8 +51,10 @@ const LightBox = ({
   };
 
   useEffect(() => {
+    // Add listeners for keys
     window.addEventListener('keyup', handleKeys);
     return () => {
+      // Unload the listeners
       window.removeEventListener('keyup', handleKeys);
     };
   }, [itemSelectedIndex]);
@@ -80,12 +91,13 @@ const LightBox = ({
 
           <div
             onTouchStart={(e) => {
-              mouseStart = (e.touches[0].clientX);
+              touchStart = (e.touches[0].clientX);
             }}
             onTouchEnd={(e) => {
+              // Logic for swaping on mobile
               const mouseEnd = e.changedTouches[0].pageX;
-              const prev: boolean = (mouseStart && (mouseEnd < mouseStart - 100)) || false;
-              const next: boolean = (mouseStart && mouseEnd > mouseStart + 100) || false;
+              const prev: boolean = (touchStart && (mouseEnd < touchStart - 100)) || false;
+              const next: boolean = (touchStart && mouseEnd > touchStart + 100) || false;
 
               if (prev && itemSelectedIndex !== null) {
                 setItemSelectedIndex(itemSelectedIndex - 1);

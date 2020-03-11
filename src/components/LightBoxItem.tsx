@@ -81,6 +81,8 @@ const LightBoxItem = ({
           type="button"
           className="styledInput"
           onClick={() => {
+            // Creates and delete a dom element
+            // to copy the value to the clipboard
             const el = document.createElement('textarea');
             el.value = item.images.original.url;
             document.body.appendChild(el);

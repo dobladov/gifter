@@ -15,6 +15,7 @@ const Search = ({
   <form
     onSubmit={async (e) => {
       e.preventDefault();
+      // Get the data with the given search term
       getPage({ q: searchTerm });
     }}
   >

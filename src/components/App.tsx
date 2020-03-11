@@ -27,6 +27,7 @@ declare const process : {
   }
 };
 
+// Get variables from enviroment
 const { API_URL } = process.env;
 const { API_KEY } = process.env;
 const { BASE_URL = '/' } = process.env;
@@ -85,6 +86,8 @@ const App = () => {
           <Loading />
         )}
 
+        {/* If the loading is finished and there are no results,
+        show a message  */}
         {(!loading && itemList.length === 0) ? (
           <div className="centerWrapper">
             <h3>Nothing found!</h3>
