@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../styles/LightBoxItem.css';
 
@@ -38,35 +38,38 @@ export interface Item {
 
 const LightBoxItem = ({
   item, onClick, main, className,
-}: Props) => (
-  <a
-    className={`LightBoxItem${className ? ` ${className}` : ''}`}
-    href={`#${item.id}`}
-    onClick={onClick}
-  >
-    <video
-      poster={main ? item.images.downsized_still.url : item.images.fixed_width_still.url}
-      key={item.id}
-      loop
-      autoPlay
-      muted
-      width={main ? item.images.original.width : 'auto'}
-      height={main ? item.images.original.height : 'auto'}
-    >
-      {main ? (
-        <>
-          <source src={item.images.original.webp} type="video/webp" />
-          <source src={item.images.original_mp4.mp4} type="video/mp4" />
-        </>
-      ) : (
-        <>
-          <source src={item.images.fixed_width.webp} type="video/webp" />
-          <source src={item.images.fixed_width.mp4} type="video/mp4" />
-        </>
-      )}
-    </video>
+}: Props) => {
+  const [copyButtonText, setCopyButtonText] = useState('Copy Link');
 
-    {main && (
+  return (
+    <a
+      className={`LightBoxItem${className ? ` ${className}` : ''}`}
+      href={`#${item.id}`}
+      onClick={onClick}
+    >
+      <video
+        poster={main ? item.images.downsized_still.url : item.images.fixed_width_still.url}
+        key={item.id}
+        loop
+        autoPlay
+        muted
+        width={main ? item.images.original.width : 'auto'}
+        height={main ? item.images.original.height : 'auto'}
+      >
+        {main ? (
+          <>
+            <source src={item.images.original.webp} type="video/webp" />
+            <source src={item.images.original_mp4.mp4} type="video/mp4" />
+          </>
+        ) : (
+          <>
+            <source src={item.images.fixed_width.webp} type="video/webp" />
+            <source src={item.images.fixed_width.mp4} type="video/mp4" />
+          </>
+        )}
+      </video>
+
+      {main && (
       <div
         className="meta"
       >
@@ -89,13 +92,18 @@ const LightBoxItem = ({
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
+            setCopyButtonText('Copied to clipboard!');
+            setTimeout(() => {
+              setCopyButtonText('Copy Link');
+            }, 1000);
           }}
         >
-          Copy Link
+          {copyButtonText}
         </button>
       </div>
-    )}
-  </a>
-);
+      )}
+    </a>
+  );
+};
 
 export default LightBoxItem;
