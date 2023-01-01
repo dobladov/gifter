@@ -7,7 +7,7 @@
     "@svgr/parcel-plugin-svgr": "^5.2.0",
     "@types/react": "^16.9.23",
     "normalize.css": "^8.0.1",
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-media-hook": "^0.4.4"
